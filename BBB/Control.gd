@@ -2,8 +2,8 @@ extends Control
 
 const WIDTH : int = 640
 const HEIGHT : int  = 480
-const RADIUS : int = 30
-var BETWEEN_DIST : float = RADIUS/4
+const RADIUS : int = 10
+var BETWEEN_DIST : float = RADIUS/2
 
 onready var rect = $TextureRect
 var image : Image
@@ -47,7 +47,7 @@ func _input(event):
 				mode = NONE
 
 func paint(color):
-	var cur_pos := get_global_mouse_position()
+	var cur_pos : Vector2 = get_global_mouse_position()
 
 	var line : Vector2 = (cur_pos - last_pos)
 	var num_circles : int = int(line.length()/BETWEEN_DIST)+1
@@ -69,3 +69,6 @@ func paint(color):
 
 	image.unlock()
 	rect.texture.image = image
+
+func get_global_mouse_position() -> Vector2:
+	return .get_global_mouse_position()-rect.rect_position
