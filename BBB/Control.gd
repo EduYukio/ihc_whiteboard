@@ -3,11 +3,15 @@ extends Control
 const WIDTH : int = 640
 const HEIGHT : int  = 480
 const RADIUS : int = 30
+var BETWEEN_DIST : float = RADIUS/4
 
 onready var rect = $TextureRect
 var image : Image
 
-var is_painting : bool = false
+enum {NONE, PAINTING, ERASING}
+var mode : int = NONE
+
+var last_pos : Vector2 = Vector2(0,0)
 
 func _ready():
 	image = Image.new()
@@ -17,30 +21,51 @@ func _ready():
 	rect.texture.image = image
 
 func _process(delta):
-	if is_painting:
+	if mode == PAINTING:
 		paint(Color.black)
+
+	elif mode == ERASING:
+		paint(Color(0,0,0,0))
+
+	last_pos = get_global_mouse_position()
 
 func _input(event):
 	if event is InputEventMouseButton:
 		var mouse_event : InputEventMouseButton = event
 		if mouse_event.button_index == BUTTON_LEFT:
 			if mouse_event.pressed:
-				is_painting = true
+				mode = PAINTING
+
 			else:
-				is_painting = false
+				mode = NONE
+
+		elif mouse_event.button_index == BUTTON_RIGHT:
+			if mouse_event.pressed:
+				mode = ERASING
+
+			else:
+				mode = NONE
 
 func paint(color):
-	var pos := get_global_mouse_position()
+	var cur_pos := get_global_mouse_position()
+
+	var line : Vector2 = (cur_pos - last_pos)
+	var num_circles : int = int(line.length()/BETWEEN_DIST)+1
 
 	image.lock()
 
-	for i in range(-RADIUS+int(pos.x), RADIUS+int(pos.x)):
-		if i >= 0 and i < WIDTH:
-			for j in range(-RADIUS+int(pos.y), RADIUS+int(pos.y)):
-				if j >= 0 and j < HEIGHT:
-					var dist = Vector2(i,j) - pos
-					if dist.length() <= RADIUS:
-						image.set_pixel(i, j, color)
+	line = line.normalized()
+
+	for x in num_circles:
+		var pos : Vector2 = line*BETWEEN_DIST*x+last_pos
+
+		for i in range(-RADIUS+int(pos.x), RADIUS+int(pos.x)):
+			if i >= 0 and i < WIDTH:
+				for j in range(-RADIUS+int(pos.y), RADIUS+int(pos.y)):
+					if j >= 0 and j < HEIGHT:
+						var dist = Vector2(i,j) - pos
+						if dist.length() <= RADIUS:
+							image.set_pixel(i, j, color)
 
 	image.unlock()
 	rect.texture.image = image
