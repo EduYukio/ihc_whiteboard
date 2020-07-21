@@ -6,6 +6,8 @@ var RADIUS : int = 10
 var BETWEEN_DIST : float = RADIUS/2.0
 
 var image : Image
+var undo_array : Array = []
+var redo_array : Array = []
 
 enum {NONE, PENCIL, CIRCLE, SQUARE, UNDO, REDO, TRASH}
 var mode : int = NONE setget change_mode
@@ -22,16 +24,38 @@ func change_mode(new_mode : int):
 			mode = new_mode
 
 		UNDO:
-			pass
+			print("undo")
+			if undo_array.empty():
+				clear_image()
+
+			else:
+				var last_action : Image = undo_array.pop_back()
+				redo_array.append(last_action)
+
+				if undo_array.empty():
+					clear_image()
+
+				else:
+					image = undo_array.back().duplicate()
+					self.texture.image = image
 
 		REDO:
-			pass
+			print("redo")
+			if not redo_array.empty():
+				var last_action : Image = redo_array.pop_back()
+				undo_array.append(last_action)
+				image = undo_array.back().duplicate()
+				self.texture.image = image
 
 		TRASH:
-			image.lock()
-			image.fill(background_color)
-			image.unlock()
-			self.texture.image = image
+			undo_array.append(image.duplicate())
+			clear_image()
+
+func clear_image() -> void:
+	image.lock()
+	image.fill(background_color)
+	image.unlock()
+	self.texture.image = image
 
 func _ready():
 	self.texture = ImageTexture.new()
@@ -57,14 +81,22 @@ func _process(_delta):
 
 func _input(event):
 	if event is InputEventMouseButton:
-		var mouse_event : InputEventMouseButton = event
-		if mouse_event.button_index == BUTTON_LEFT:
-			if mouse_event.pressed:
-				last_pos = get_local_mouse_position()
-				mouse_pressed = true
+		var mouse_pos : Vector2 = get_local_mouse_position()
+		if mouse_pos.x >= 0 and mouse_pos.y >= 0 and \
+			mouse_pos.x <= rect_size.x and mouse_pos.y <= rect_size.y:
 
-			else:
-				mouse_pressed = false
+			var mouse_event : InputEventMouseButton = event
+			if mouse_event.button_index == BUTTON_LEFT:
+				if mouse_event.pressed:
+					last_pos = get_local_mouse_position()
+					mouse_pressed = true
+
+					if not redo_array.empty():
+						redo_array.clear()
+
+				else:
+					mouse_pressed = false
+					undo_array.append(image.duplicate())
 #
 #		elif mouse_event.button_index == BUTTON_RIGHT:
 #			if mouse_event.pressed:
