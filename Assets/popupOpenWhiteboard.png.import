@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/plusPopup.png-af210c65aaab9e39ec7c98455f61ba48.stex"
+path="res://.import/popupOpenWhiteboard.png-a765a11517068c870074d211a8b1ce0c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/plusPopup.png"
-dest_files=[ "res://.import/plusPopup.png-af210c65aaab9e39ec7c98455f61ba48.stex" ]
+source_file="res://Assets/popupOpenWhiteboard.png"
+dest_files=[ "res://.import/popupOpenWhiteboard.png-a765a11517068c870074d211a8b1ce0c.stex" ]
 
 [params]
 

@@ -12,5 +12,5 @@ func _on_NewWhiteboardButton_pressed():
 		CanvasInstance.rect_position = CanvasInstance.rect_position + Vector2(624,192)
 	else:
 		get_node("/root/Main/Canvas").queue_free()
-	
+		
 	get_parent().queue_free()
