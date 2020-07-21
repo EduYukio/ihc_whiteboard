@@ -14,17 +14,6 @@ __meta__ = {
 [node name="Canvas" parent="." instance=ExtResource( 2 )]
 margin_left = 21.0
 margin_top = 9.0
-margin_right = 61.0
-margin_bottom = 49.0
+margin_right = 521.0
+margin_bottom = 409.0
 texture = null
-WIDTH = 200
-HEIGHT = 200
-
-[node name="Canvas2" parent="." instance=ExtResource( 2 )]
-margin_left = 290.0
-margin_top = 19.0
-margin_right = 330.0
-margin_bottom = 59.0
-texture = null
-WIDTH = 200
-HEIGHT = 200
