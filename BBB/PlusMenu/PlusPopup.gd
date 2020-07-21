@@ -1,7 +1,7 @@
 extends Sprite
 
-const open_sprite = preload("res://Assets//popupOpenWhiteBoard.png")
-const close_sprite = preload("res://Assets//popupCloseWhiteBoard.png")
+const open_sprite = preload("res://Assets//popup_open_wb.png")
+const close_sprite = preload("res://Assets//popup_close_wb.png")
 
 var new_canvas : bool = true
 signal temp_whiteboard(new)

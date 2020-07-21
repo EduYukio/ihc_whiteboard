@@ -14,7 +14,7 @@ func _on_NewWhiteboardButton_pressed():
 
 		create_white_canvas()
 
-	#close whiteboard
+	# close whiteboard
 	else:
 		# respawna o slide canvas guardado, se tiver
 		if main_node.has_stored_canvas():
