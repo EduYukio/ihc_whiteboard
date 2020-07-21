@@ -1,0 +1,115 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://BBB/Main/WBButton.gd" type="Script" id=1]
+[ext_resource path="res://BBB/Whiteboard_Tools/Whiteboard_Tools.gd" type="Script" id=2]
+
+[node name="Whiteboard_Panel" type="HBoxContainer"]
+margin_right = 303.0
+margin_bottom = 44.0
+custom_constants/separation = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selected" type="Polygon2D" parent="."]
+visible = false
+color = Color( 0, 0, 0, 0.509804 )
+polygon = PoolVector2Array( 0, 0, 42, 0, 42, 44, 0, 44 )
+
+[node name="Pencil" type="Button" parent="."]
+margin_right = 42.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 42, 44 )
+flat = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+button_type = 1
+
+[node name="Circle" type="Button" parent="."]
+margin_left = 42.0
+margin_right = 84.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 42, 44 )
+flat = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+button_type = 2
+
+[node name="Square" type="Button" parent="."]
+margin_left = 84.0
+margin_right = 126.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 42, 44 )
+flat = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+button_type = 3
+
+[node name="Undo" type="Button" parent="."]
+margin_left = 126.0
+margin_right = 171.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 45, 44 )
+flat = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+button_type = 4
+
+[node name="Redo" type="Button" parent="."]
+margin_left = 171.0
+margin_right = 216.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 45, 44 )
+flat = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+button_type = 5
+
+[node name="Trash" type="Button" parent="."]
+margin_left = 216.0
+margin_right = 261.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 45, 44 )
+flat = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+button_type = 6
+
+[node name="Share" type="Button" parent="."]
+margin_left = 261.0
+margin_right = 303.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 42, 44 )
+flat = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+button_type = 7
+[connection signal="pressed" from="Pencil" to="Pencil" method="_on_PencilButton_pressed"]
+[connection signal="wb_button_pressed" from="Pencil" to="." method="_on_wb_button_pressed"]
+[connection signal="pressed" from="Circle" to="Circle" method="_on_PencilButton_pressed"]
+[connection signal="wb_button_pressed" from="Circle" to="." method="_on_wb_button_pressed"]
+[connection signal="pressed" from="Square" to="Square" method="_on_PencilButton_pressed"]
+[connection signal="wb_button_pressed" from="Square" to="." method="_on_wb_button_pressed"]
+[connection signal="pressed" from="Undo" to="Undo" method="_on_PencilButton_pressed"]
+[connection signal="wb_button_pressed" from="Undo" to="." method="_on_wb_button_pressed"]
+[connection signal="pressed" from="Redo" to="Redo" method="_on_PencilButton_pressed"]
+[connection signal="wb_button_pressed" from="Redo" to="." method="_on_wb_button_pressed"]
+[connection signal="pressed" from="Trash" to="Trash" method="_on_PencilButton_pressed"]
+[connection signal="wb_button_pressed" from="Trash" to="." method="_on_wb_button_pressed"]
+[connection signal="pressed" from="Share" to="Share" method="_on_PencilButton_pressed"]
+[connection signal="wb_button_pressed" from="Share" to="." method="_on_wb_button_pressed"]

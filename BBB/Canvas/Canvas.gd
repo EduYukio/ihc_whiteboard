@@ -3,21 +3,41 @@ extends TextureRect
 var WIDTH : int = 1343
 var HEIGHT : int  = 795
 var RADIUS : int = 10
-var BETWEEN_DIST : float = RADIUS/2
+var BETWEEN_DIST : float = RADIUS/2.0
 
 var image : Image
 
-enum {NONE, PAINTING, ERASING}
-var mode : int = NONE
-var background_color
+enum {NONE, PENCIL, CIRCLE, SQUARE, UNDO, REDO, TRASH}
+var mode : int = NONE setget change_mode
+var background_color = Color(0, 0, 0, 0)
+
+var mouse_pressed : bool = false
 
 var last_pos : Vector2 = Vector2(0,0)
+
+func change_mode(new_mode : int):
+	match(new_mode):
+
+		NONE, PENCIL, CIRCLE, SQUARE:
+			mode = new_mode
+
+		UNDO:
+			pass
+
+		REDO:
+			pass
+
+		TRASH:
+			image.lock()
+			image.fill(background_color)
+			image.unlock()
+			self.texture.image = image
 
 func _ready():
 	self.texture = ImageTexture.new()
 
-	self.rect_size.x = WIDTH
-	self.rect_size.y = HEIGHT
+	WIDTH = self.rect_size.x
+	HEIGHT = self.rect_size.y
 
 	image = Image.new()
 	image.create(WIDTH, HEIGHT, false, Image.FORMAT_RGBA8)
@@ -25,31 +45,33 @@ func _ready():
 
 	self.texture.image = image
 
-func _process(delta):
-	if mode == PAINTING:
-		paint(Color.black)
+func _process(_delta):
+	if mouse_pressed:
+		if mode == PENCIL:
+			paint(Color.black)
 
-	elif mode == ERASING:
-		paint(background_color)
+	#	elif mode == ERASING:
+	#		paint(background_color)
 
-	last_pos = get_local_mouse_position()
+		last_pos = get_local_mouse_position()
 
 func _input(event):
 	if event is InputEventMouseButton:
 		var mouse_event : InputEventMouseButton = event
 		if mouse_event.button_index == BUTTON_LEFT:
 			if mouse_event.pressed:
-				mode = PAINTING
+				last_pos = get_local_mouse_position()
+				mouse_pressed = true
 
 			else:
-				mode = NONE
-
-		elif mouse_event.button_index == BUTTON_RIGHT:
-			if mouse_event.pressed:
-				mode = ERASING
-
-			else:
-				mode = NONE
+				mouse_pressed = false
+#
+#		elif mouse_event.button_index == BUTTON_RIGHT:
+#			if mouse_event.pressed:
+#				mode = ERASING
+#
+#			else:
+#				mode = NONE
 
 func paint(color):
 	var cur_pos : Vector2 = get_local_mouse_position()
