@@ -10,6 +10,6 @@ func _on_PlusButton_pressed():
 	if not has_node("PlusPopup"): 
 		PlusPopupInstance = PlusPopupScene.instance()
 		self.add_child(PlusPopupInstance)
-		PlusPopupInstance.position = PlusPopupInstance.position + Vector2(0,-82)
+		PlusPopupInstance.position = PlusPopupInstance.position + Vector2(-2,-135)
 	else:
 		PlusPopupInstance.queue_free()

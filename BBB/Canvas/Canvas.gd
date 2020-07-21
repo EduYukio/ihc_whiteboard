@@ -1,7 +1,7 @@
 extends TextureRect
 
-var WIDTH : int = 640
-var HEIGHT : int  = 480
+var WIDTH : int = 1343
+var HEIGHT : int  = 795
 var RADIUS : int = 10
 var BETWEEN_DIST : float = RADIUS/2
 
@@ -15,11 +15,11 @@ var last_pos : Vector2 = Vector2(0,0)
 func _ready():
 	self.texture = ImageTexture.new()
 
-	WIDTH = self.rect_size.x
-	HEIGHT = self.rect_size.y
+	self.rect_size.x = WIDTH
+	self.rect_size.y = HEIGHT
 
 	image = Image.new()
-	image.create(WIDTH, HEIGHT, true, Image.FORMAT_RGBA8)
+	image.create(WIDTH, HEIGHT, false, Image.FORMAT_RGBA8)
 	image.fill(Color.white)
 
 	self.texture.image = image
@@ -29,7 +29,8 @@ func _process(delta):
 		paint(Color.black)
 
 	elif mode == ERASING:
-		paint(Color(0,0,0,0))
+		paint(Color(1,1,1,1))
+#		paint(Color(0,0,0,0))
 
 	last_pos = get_local_mouse_position()
 
