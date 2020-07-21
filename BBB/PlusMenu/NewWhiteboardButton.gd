@@ -2,15 +2,32 @@ extends Button
 
 const CanvasScene = preload("res://BBB//Canvas//Canvas.tscn")
 onready var main_node = get_node("/root/Main")
-var CanvasInstance
+onready var interface_node = main_node.get_node("BBB_Interface")
 
 func _on_NewWhiteboardButton_pressed():
-	if not main_node.has_node("Canvas"): 
-		CanvasInstance = CanvasScene.instance()
-		var popup_node = get_parent()
-		main_node.add_child_below_node(popup_node, CanvasInstance)
-		CanvasInstance.rect_position = CanvasInstance.rect_position + Vector2(624,192)
+	# create whiteboard
+	if not main_node.has_node("WhiteCanvas"): 
+		# guarda slide canvas, se tiver
+		if main_node.has_node("SlideCanvas"):
+			var slide_canvas = get_node("/root/Main/SlideCanvas")
+			main_node.store_canvas(slide_canvas)
+			
+		create_white_canvas()
+	
+	#close whiteboard
 	else:
-		get_node("/root/Main/Canvas").queue_free()
+		# respawna o slide canvas guardado, se tiver
+		if main_node.has_stored_canvas():
+			var slide_canvas = main_node.pop_canvas()
+			main_node.add_child_below_node(interface_node, slide_canvas)
+			
+		get_node("/root/Main/WhiteCanvas").queue_free()
 		
 	get_parent().queue_free()
+
+func create_white_canvas():
+	var CanvasInstance = CanvasScene.instance()
+	CanvasInstance.background_color = Color.white
+	CanvasInstance.set_name("WhiteCanvas")
+	main_node.add_child_below_node(interface_node, CanvasInstance)
+	CanvasInstance.rect_position = Vector2(624,192)

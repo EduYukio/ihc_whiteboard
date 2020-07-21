@@ -9,6 +9,7 @@ var image : Image
 
 enum {NONE, PAINTING, ERASING}
 var mode : int = NONE
+var background_color
 
 var last_pos : Vector2 = Vector2(0,0)
 
@@ -20,7 +21,7 @@ func _ready():
 
 	image = Image.new()
 	image.create(WIDTH, HEIGHT, false, Image.FORMAT_RGBA8)
-	image.fill(Color.white)
+	image.fill(background_color)
 
 	self.texture.image = image
 
@@ -29,8 +30,7 @@ func _process(delta):
 		paint(Color.black)
 
 	elif mode == ERASING:
-		paint(Color(1,1,1,1))
-#		paint(Color(0,0,0,0))
+		paint(background_color)
 
 	last_pos = get_local_mouse_position()
 
