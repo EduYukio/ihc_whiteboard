@@ -15,6 +15,7 @@ margin_left = 415.093
 margin_top = 603.495
 margin_right = 441.093
 margin_bottom = 629.495
+focus_mode = 0
 flat = true
 script = ExtResource( 2 )
 [connection signal="pressed" from="PlusButton" to="PlusButton" method="_on_PlusButton_pressed"]
