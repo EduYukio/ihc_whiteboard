@@ -24,7 +24,6 @@ func change_mode(new_mode : int):
 			mode = new_mode
 
 		UNDO:
-			print("undo")
 			if undo_array.empty():
 				clear_image()
 
@@ -40,7 +39,6 @@ func change_mode(new_mode : int):
 					self.texture.image = image
 
 		REDO:
-			print("redo")
 			if not redo_array.empty():
 				var last_action : Image = redo_array.pop_back()
 				undo_array.append(last_action)
@@ -60,8 +58,8 @@ func clear_image() -> void:
 func _ready():
 	self.texture = ImageTexture.new()
 
-	WIDTH = self.rect_size.x
-	HEIGHT = self.rect_size.y
+	WIDTH = int(self.rect_size.x)
+	HEIGHT = int(self.rect_size.y)
 
 	image = Image.new()
 	image.create(WIDTH, HEIGHT, false, Image.FORMAT_RGBA8)
