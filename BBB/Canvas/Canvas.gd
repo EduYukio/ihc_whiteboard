@@ -1,8 +1,8 @@
 extends TextureRect
 
-export(int) var WIDTH : int = 640
-export(int) var HEIGHT : int  = 480
-export(int) var RADIUS : int = 10
+var WIDTH : int = 640
+var HEIGHT : int  = 480
+var RADIUS : int = 10
 var BETWEEN_DIST : float = RADIUS/2
 
 var image : Image
@@ -14,6 +14,9 @@ var last_pos : Vector2 = Vector2(0,0)
 
 func _ready():
 	self.texture = ImageTexture.new()
+
+	WIDTH = self.rect_size.x
+	HEIGHT = self.rect_size.y
 
 	image = Image.new()
 	image.create(WIDTH, HEIGHT, true, Image.FORMAT_RGBA8)
