@@ -10,18 +10,16 @@ func _on_wb_button_pressed(button : Button, type : int):
 
 	match(type):
 		PENCIL_TOOLS:
-			show_button_highlight(button)
 			emit_signal("pencil_button_pressed")
 				
-		THICKNESS, COLOR:
-			show_button_highlight(button)
-			
 		TEXT, LINE, CIRCLE, TRIANGLE, SQUARE, ERASER, PENCIL:
+			show_button_highlight(button)
 			emit_signal("pencil_button_pressed")
 	
 
 func show_button_highlight(button):
 	$Selected.show()
+	$Selected.set_modulate(Color(1,1,1,1))
 	$Selected.position = button.rect_position
 	$Selected.polygon[1].x = button.rect_size.x
 	$Selected.polygon[2].x = button.rect_size.x

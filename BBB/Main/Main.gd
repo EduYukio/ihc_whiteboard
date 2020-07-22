@@ -14,7 +14,6 @@ func _on_temp_whiteboard(new : bool):
 
 func temp_canvas():
 	stored_canvas = cur_canvas
-
 	var canvas_instance : TextureRect = CANVAS_SCENE.instance()
 	canvas_instance.background_color = Color.white
 	canvas_instance.rect_position = cur_canvas.rect_position
@@ -36,3 +35,4 @@ func _on_Whiteboard_tool_changed(new_tool):
 
 func _on_Whiteboard_pencil_button_pressed():
 	$PencilToolsSprite.visible = !$PencilToolsSprite.visible
+	$Pencil_Panel/Selected.visible = !$Pencil_Panel/Selected.visible

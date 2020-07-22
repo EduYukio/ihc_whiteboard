@@ -52,6 +52,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Selected" type="Polygon2D" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+color = Color( 0, 0, 0, 0.509804 )
+polygon = PoolVector2Array( 0, 0, 42, 0, 42, 44, 0, 44 )
+
 [node name="Text" type="Button" parent="."]
 margin_right = 42.5
 margin_bottom = 42.0
