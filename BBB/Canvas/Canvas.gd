@@ -9,7 +9,7 @@ var image : Image
 var undo_array : Array = []
 var redo_array : Array = []
 
-enum {NONE, PENCIL, CIRCLE, SQUARE, UNDO, REDO, TRASH}
+enum {NONE, PENCIL_TOOLS, THICKNESS, COLOR, UNDO, REDO, TRASH, SHARE, TEXT, LINE, CIRCLE, TRIANGLE, SQUARE, ERASER, PENCIL}
 var mode : int = NONE setget change_mode
 var background_color = Color(0, 0, 0, 0)
 
@@ -19,8 +19,7 @@ var last_pos : Vector2 = Vector2(0,0)
 
 func change_mode(new_mode : int):
 	match(new_mode):
-
-		NONE, PENCIL, CIRCLE, SQUARE:
+		NONE, TEXT, LINE, CIRCLE, TRIANGLE, SQUARE, ERASER, PENCIL:
 			mode = new_mode
 
 		UNDO:

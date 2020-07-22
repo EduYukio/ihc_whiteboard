@@ -33,3 +33,6 @@ func pop_canvas():
 
 func _on_Whiteboard_tool_changed(new_tool):
 	cur_canvas.mode = new_tool
+
+func _on_Whiteboard_pencil_button_pressed():
+	$PencilToolsSprite.visible = !$PencilToolsSprite.visible

@@ -1,41 +1,41 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://BBB/Whiteboard_Tools/Whiteboard_Tools.gd" type="Script" id=1]
-[ext_resource path="res://BBB/Main/WBButton.gd" type="Script" id=2]
-
-[sub_resource type="InputEventKey" id=5]
-scancode = 80
-
-[sub_resource type="ShortCut" id=6]
-shortcut = SubResource( 5 )
-
-[sub_resource type="InputEventKey" id=7]
-scancode = 67
-
-[sub_resource type="ShortCut" id=8]
-shortcut = SubResource( 7 )
-
-[sub_resource type="InputEventKey" id=9]
-scancode = 83
-
-[sub_resource type="ShortCut" id=10]
-shortcut = SubResource( 9 )
+[ext_resource path="res://BBB/Whiteboard_Tools/WBButton.gd" type="Script" id=2]
 
 [sub_resource type="InputEventKey" id=1]
-control = true
-command = true
-scancode = 90
+scancode = 80
 
 [sub_resource type="ShortCut" id=2]
 shortcut = SubResource( 1 )
 
 [sub_resource type="InputEventKey" id=3]
+scancode = 67
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
+
+[sub_resource type="InputEventKey" id=5]
+scancode = 83
+
+[sub_resource type="ShortCut" id=6]
+shortcut = SubResource( 5 )
+
+[sub_resource type="InputEventKey" id=7]
+control = true
+command = true
+scancode = 90
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
+
+[sub_resource type="InputEventKey" id=9]
 control = true
 command = true
 scancode = 89
 
-[sub_resource type="ShortCut" id=4]
-shortcut = SubResource( 3 )
+[sub_resource type="ShortCut" id=10]
+shortcut = SubResource( 9 )
 
 [sub_resource type="InputEventKey" id=11]
 scancode = 16777224
@@ -57,11 +57,11 @@ visible = false
 color = Color( 0, 0, 0, 0.509804 )
 polygon = PoolVector2Array( 0, 0, 42, 0, 42, 44, 0, 44 )
 
-[node name="Pencil" type="Button" parent="."]
+[node name="PencilTools" type="Button" parent="."]
 margin_right = 42.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 42, 44 )
-shortcut = SubResource( 6 )
+shortcut = SubResource( 2 )
 flat = true
 script = ExtResource( 2 )
 __meta__ = {
@@ -69,12 +69,12 @@ __meta__ = {
 }
 button_type = 1
 
-[node name="Circle" type="Button" parent="."]
+[node name="Thickness" type="Button" parent="."]
 margin_left = 42.0
 margin_right = 84.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 42, 44 )
-shortcut = SubResource( 8 )
+shortcut = SubResource( 4 )
 flat = true
 script = ExtResource( 2 )
 __meta__ = {
@@ -82,12 +82,12 @@ __meta__ = {
 }
 button_type = 2
 
-[node name="Square" type="Button" parent="."]
+[node name="Color" type="Button" parent="."]
 margin_left = 84.0
 margin_right = 126.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 42, 44 )
-shortcut = SubResource( 10 )
+shortcut = SubResource( 6 )
 flat = true
 script = ExtResource( 2 )
 __meta__ = {
@@ -100,7 +100,7 @@ margin_left = 126.0
 margin_right = 171.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 45, 44 )
-shortcut = SubResource( 2 )
+shortcut = SubResource( 8 )
 flat = true
 script = ExtResource( 2 )
 __meta__ = {
@@ -113,7 +113,7 @@ margin_left = 171.0
 margin_right = 216.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 45, 44 )
-shortcut = SubResource( 4 )
+shortcut = SubResource( 10 )
 flat = true
 script = ExtResource( 2 )
 __meta__ = {
@@ -145,17 +145,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 button_type = 7
-[connection signal="pressed" from="Pencil" to="Pencil" method="_on_PencilButton_pressed"]
-[connection signal="wb_button_pressed" from="Pencil" to="." method="_on_wb_button_pressed"]
-[connection signal="pressed" from="Circle" to="Circle" method="_on_PencilButton_pressed"]
-[connection signal="wb_button_pressed" from="Circle" to="." method="_on_wb_button_pressed"]
-[connection signal="pressed" from="Square" to="Square" method="_on_PencilButton_pressed"]
-[connection signal="wb_button_pressed" from="Square" to="." method="_on_wb_button_pressed"]
-[connection signal="pressed" from="Undo" to="Undo" method="_on_PencilButton_pressed"]
+[connection signal="pressed" from="PencilTools" to="PencilTools" method="_on_Whiteboard_Tools_pressed"]
+[connection signal="wb_button_pressed" from="PencilTools" to="." method="_on_wb_button_pressed"]
+[connection signal="pressed" from="Thickness" to="Thickness" method="_on_Whiteboard_Tools_pressed"]
+[connection signal="wb_button_pressed" from="Thickness" to="." method="_on_wb_button_pressed"]
+[connection signal="pressed" from="Color" to="Color" method="_on_Whiteboard_Tools_pressed"]
+[connection signal="wb_button_pressed" from="Color" to="." method="_on_wb_button_pressed"]
+[connection signal="pressed" from="Undo" to="Undo" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="Undo" to="." method="_on_wb_button_pressed"]
-[connection signal="pressed" from="Redo" to="Redo" method="_on_PencilButton_pressed"]
+[connection signal="pressed" from="Redo" to="Redo" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="Redo" to="." method="_on_wb_button_pressed"]
-[connection signal="pressed" from="Trash" to="Trash" method="_on_PencilButton_pressed"]
+[connection signal="pressed" from="Trash" to="Trash" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="Trash" to="." method="_on_wb_button_pressed"]
-[connection signal="pressed" from="Share" to="Share" method="_on_PencilButton_pressed"]
+[connection signal="pressed" from="Share" to="Share" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="Share" to="." method="_on_wb_button_pressed"]
