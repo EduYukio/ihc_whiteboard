@@ -13,6 +13,7 @@ func _on_wb_button_pressed(button : Button, type : int):
 			$pencil_tools.visible = not $pencil_tools.visible
 
 		TEXT, LINE, CIRCLE, TRIANGLE, SQUARE, ERASER, PENCIL:
+			$pencil_tools.visible = false
 			show_button_highlight(button)
 
 
