@@ -51,7 +51,6 @@ position = Vector2( 78, -65 )
 z_index = 2
 
 [node name="PencilToolsSprite" type="Sprite" parent="."]
-visible = false
 position = Vector2( 1479.36, 925.46 )
 texture = ExtResource( 7 )
 

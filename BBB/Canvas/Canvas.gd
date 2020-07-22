@@ -34,6 +34,7 @@ func change_mode(new_mode : int):
 					clear_image()
 
 				else:
+					image.call_deferred("free")
 					image = undo_array.back().duplicate()
 					self.texture.image = image
 
@@ -41,6 +42,7 @@ func change_mode(new_mode : int):
 			if not redo_array.empty():
 				var last_action : Image = redo_array.pop_back()
 				undo_array.append(last_action)
+				image.call_deferred("free")
 				image = undo_array.back().duplicate()
 				self.texture.image = image
 
@@ -78,22 +80,24 @@ func _process(_delta):
 
 func _input(event):
 	if event is InputEventMouseButton:
-		var mouse_pos : Vector2 = get_local_mouse_position()
-		if mouse_pos.x >= 0 and mouse_pos.y >= 0 and \
-			mouse_pos.x <= rect_size.x and mouse_pos.y <= rect_size.y:
+		var mouse_event : InputEventMouseButton = event
 
-			var mouse_event : InputEventMouseButton = event
-			if mouse_event.button_index == BUTTON_LEFT:
-				if mouse_event.pressed:
-					last_pos = get_local_mouse_position()
-					mouse_pressed = true
+		if mouse_event.button_index == BUTTON_LEFT:
+			var mouse_pos : Vector2 = get_local_mouse_position()
 
-					if not redo_array.empty():
-						redo_array.clear()
+			if mouse_event.pressed and \
+			 mouse_pos.x >= 0 and mouse_pos.y >= 0 and \
+			 mouse_pos.x <= rect_size.x and mouse_pos.y <= rect_size.y:
+				last_pos = get_local_mouse_position()
+				mouse_pressed = true
 
-				else:
-					mouse_pressed = false
-					undo_array.append(image.duplicate())
+				if not redo_array.empty():
+					while not redo_array.empty():
+						redo_array.pop_back().call_deferred("free")
+
+			elif mouse_pressed:
+				mouse_pressed = false
+				undo_array.append(image.duplicate())
 
 func paint(color):
 	var cur_pos : Vector2 = get_local_mouse_position()

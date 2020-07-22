@@ -25,6 +25,7 @@ func temp_canvas():
 	cur_canvas = canvas_instance
 
 func pop_canvas():
+	stored_canvas.mode = cur_canvas.mode
 	cur_canvas.call_deferred("free")
 	self.add_child_below_node($BBB_Interface, stored_canvas)
 	cur_canvas = stored_canvas
