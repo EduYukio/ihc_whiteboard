@@ -118,9 +118,9 @@ button_type = 3
 [node name="Picker_Position" type="Control" parent="whiteboard_tools/Color"]
 visible = false
 margin_left = -138.0
-margin_top = -420.0
+margin_top = -445.998
 margin_right = 180.0
-margin_bottom = -8.0
+margin_bottom = -33.9981
 rect_min_size = Vector2( 318, 412 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -129,7 +129,7 @@ __meta__ = {
 [node name="BG" type="Polygon2D" parent="whiteboard_tools/Color/Picker_Position"]
 position = Vector2( 4, 4 )
 color = Color( 0.0235294, 0.0901961, 0.164706, 1 )
-polygon = PoolVector2Array( -5, -5, 323, -5, 323, 415, -5, 415 )
+polygon = PoolVector2Array( -5, -5, 323, -5, 323, 442, -5, 442 )
 
 [node name="ColorPicker" type="ColorPicker" parent="whiteboard_tools/Color/Picker_Position"]
 margin_left = 4.0
