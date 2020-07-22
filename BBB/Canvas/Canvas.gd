@@ -11,7 +11,9 @@ var redo_array : Array = []
 
 enum {NONE, PENCIL_TOOLS, THICKNESS, COLOR, UNDO, REDO, TRASH, SHARE, TEXT, LINE, CIRCLE, TRIANGLE, SQUARE, ERASER, PENCIL}
 var mode : int = NONE setget change_mode
-var background_color = Color(0, 0, 0, 0)
+
+var pencil_color : Color = Color.black
+var background_color : Color = Color(0, 0, 0, 0)
 
 var mouse_pressed : bool = false
 
@@ -71,7 +73,7 @@ func _ready():
 func _process(_delta):
 	if mouse_pressed:
 		if mode == PENCIL:
-			paint(Color.black)
+			paint(pencil_color)
 
 		elif mode == ERASER:
 			paint(background_color)

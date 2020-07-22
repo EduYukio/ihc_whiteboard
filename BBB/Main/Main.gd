@@ -19,6 +19,7 @@ func temp_canvas():
 	canvas_instance.rect_position = cur_canvas.rect_position
 	canvas_instance.rect_size = cur_canvas.rect_size
 	canvas_instance.mode = cur_canvas.mode
+	canvas_instance.pencil_color = cur_canvas.pencil_color
 
 	remove_child(cur_canvas)
 	self.add_child_below_node($BBB_Interface, canvas_instance)
@@ -26,6 +27,7 @@ func temp_canvas():
 
 func pop_canvas():
 	stored_canvas.mode = cur_canvas.mode
+	stored_canvas.pencil_color = cur_canvas.pencil_color
 	cur_canvas.call_deferred("free")
 	self.add_child_below_node($BBB_Interface, stored_canvas)
 	cur_canvas = stored_canvas
@@ -34,6 +36,5 @@ func pop_canvas():
 func _on_Whiteboard_tool_changed(new_tool):
 	cur_canvas.mode = new_tool
 
-func _on_Whiteboard_pencil_button_pressed():
-	$PencilToolsSprite.visible = !$PencilToolsSprite.visible
-	$Pencil_Panel/Selected.visible = !$Pencil_Panel/Selected.visible
+func _on_color_changed(new_color):
+	cur_canvas.pencil_color = new_color

@@ -3,6 +3,7 @@ extends Control
 enum {NONE, PENCIL_TOOLS, THICKNESS, COLOR, UNDO, REDO, TRASH, SHARE, TEXT, LINE, CIRCLE, TRIANGLE, SQUARE, ERASER, PENCIL}
 
 signal tool_changed(new_tool)
+signal color_changed(new_color)
 
 func _on_wb_button_pressed(button : Button, type : int):
 	if type != PENCIL_TOOLS:
@@ -11,6 +12,9 @@ func _on_wb_button_pressed(button : Button, type : int):
 	match(type):
 		PENCIL_TOOLS:
 			$pencil_tools.visible = not $pencil_tools.visible
+
+		COLOR:
+			$whiteboard_tools/Color/Picker_Position.visible = not $whiteboard_tools/Color/Picker_Position.visible
 
 		TEXT, LINE, CIRCLE, TRIANGLE, SQUARE, ERASER, PENCIL:
 			$pencil_tools.visible = false
@@ -24,3 +28,7 @@ func show_button_highlight(button):
 	$pencil_tools/Selected.position = button.rect_position
 	$pencil_tools/Selected.polygon[1].x = button.rect_size.x
 	$pencil_tools/Selected.polygon[2].x = button.rect_size.x
+
+func _on_color_changed(color):
+	$whiteboard_tools/Color/color_picked.color = color
+	emit_signal("color_changed", color)

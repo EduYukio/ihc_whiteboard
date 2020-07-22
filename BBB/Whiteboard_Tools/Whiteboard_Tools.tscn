@@ -154,6 +154,39 @@ __meta__ = {
 }
 button_type = 3
 
+[node name="Picker_Position" type="Control" parent="whiteboard_tools/Color"]
+visible = false
+margin_left = -138.0
+margin_top = -420.0
+margin_right = 180.0
+margin_bottom = -8.0
+rect_min_size = Vector2( 318, 412 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="Polygon2D" parent="whiteboard_tools/Color/Picker_Position"]
+position = Vector2( 4, 4 )
+color = Color( 0.0235294, 0.0901961, 0.164706, 1 )
+polygon = PoolVector2Array( -5, -5, 323, -5, 323, 415, -5, 415 )
+
+[node name="ColorPicker" type="ColorPicker" parent="whiteboard_tools/Color/Picker_Position"]
+rect_min_size = Vector2( 318, 412 )
+rect_pivot_offset = Vector2( 159, 0 )
+color = Color( 0, 0, 0, 1 )
+edit_alpha = false
+deferred_mode = true
+presets_enabled = false
+presets_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="color_picked" type="Polygon2D" parent="whiteboard_tools/Color"]
+position = Vector2( 21, 22 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -12, -11, 10, -11, 10, 11, -12, 11 )
+
 [node name="Undo" type="Button" parent="whiteboard_tools"]
 margin_left = 126.0
 margin_right = 171.0
@@ -326,6 +359,7 @@ button_type = 14
 [connection signal="wb_button_pressed" from="whiteboard_tools/Thickness" to="." method="_on_wb_button_pressed"]
 [connection signal="pressed" from="whiteboard_tools/Color" to="whiteboard_tools/Color" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="whiteboard_tools/Color" to="." method="_on_wb_button_pressed"]
+[connection signal="color_changed" from="whiteboard_tools/Color/Picker_Position/ColorPicker" to="." method="_on_color_changed"]
 [connection signal="pressed" from="whiteboard_tools/Undo" to="whiteboard_tools/Undo" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="whiteboard_tools/Undo" to="." method="_on_wb_button_pressed"]
 [connection signal="pressed" from="whiteboard_tools/Redo" to="whiteboard_tools/Redo" method="_on_Whiteboard_Tools_pressed"]
