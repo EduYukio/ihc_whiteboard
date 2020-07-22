@@ -4,8 +4,10 @@ enum {NONE, PENCIL_TOOLS, THICKNESS, COLOR, UNDO, REDO, TRASH, SHARE, TEXT, LINE
 
 signal tool_changed(new_tool)
 signal color_changed(new_color)
+signal is_drawable(state)
 
 func _on_wb_button_pressed(button : Button, type : int):
+	emit_signal("is_drawable", false)
 	if type != PENCIL_TOOLS:
 		emit_signal("tool_changed", type)
 
@@ -17,6 +19,7 @@ func _on_wb_button_pressed(button : Button, type : int):
 			$whiteboard_tools/Color/Picker_Position.visible = not $whiteboard_tools/Color/Picker_Position.visible
 
 		TEXT, LINE, CIRCLE, TRIANGLE, SQUARE, ERASER, PENCIL:
+			emit_signal("is_drawable", true)
 			$pencil_tools.visible = false
 			show_button_highlight(button)
 

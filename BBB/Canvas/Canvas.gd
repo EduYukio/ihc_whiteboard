@@ -19,6 +19,8 @@ var mouse_pressed : bool = false
 
 var last_pos : Vector2 = Vector2(0,0)
 
+var drawable : bool = true
+
 func change_mode(new_mode : int):
 	match(new_mode):
 		NONE, TEXT, LINE, CIRCLE, TRIANGLE, SQUARE, ERASER, PENCIL:
@@ -71,7 +73,7 @@ func _ready():
 	self.texture.image = image
 
 func _process(_delta):
-	if mouse_pressed:
+	if mouse_pressed and drawable:
 		if mode == PENCIL:
 			paint(pencil_color)
 
@@ -124,3 +126,8 @@ func paint(color):
 
 	image.unlock()
 	self.texture.image = image
+
+
+func _on_Whiteboard_Panel_is_drawable(state):
+	drawable = state
+
