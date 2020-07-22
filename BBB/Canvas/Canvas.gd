@@ -71,8 +71,8 @@ func _process(_delta):
 		if mode == PENCIL:
 			paint(Color.black)
 
-	#	elif mode == ERASING:
-	#		paint(background_color)
+		elif mode == ERASER:
+			paint(background_color)
 
 		last_pos = get_local_mouse_position()
 
@@ -94,13 +94,6 @@ func _input(event):
 				else:
 					mouse_pressed = false
 					undo_array.append(image.duplicate())
-#
-#		elif mouse_event.button_index == BUTTON_RIGHT:
-#			if mouse_event.pressed:
-#				mode = ERASING
-#
-#			else:
-#				mode = NONE
 
 func paint(color):
 	var cur_pos : Vector2 = get_local_mouse_position()
