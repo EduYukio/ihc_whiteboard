@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://BBB/Whiteboard_Tools/Whiteboard_Tools.gd" type="Script" id=1]
 [ext_resource path="res://BBB/Whiteboard_Tools/WBButton.gd" type="Script" id=2]
 [ext_resource path="res://Assets/wb_toolbar.png" type="Texture" id=3]
 [ext_resource path="res://Assets/pencil_toolbar.png" type="Texture" id=4]
+[ext_resource path="res://Assets/pencil_toolbar_icons.png" type="Texture" id=5]
 
 [sub_resource type="InputEventKey" id=1]
 scancode = 80
@@ -122,14 +123,10 @@ __meta__ = {
 button_type = 1
 
 [node name="tool" type="Sprite" parent="whiteboard_tools/PencilTools"]
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 offset = Vector2( 21, 22 )
 hframes = 7
 frame = 6
-
-[node name="corner_triangle" type="Polygon2D" parent="whiteboard_tools/PencilTools"]
-color = Color( 0.38, 0.38, 0.38, 1 )
-polygon = PoolVector2Array( 30, 41, 40, 31, 40, 41 )
 
 [node name="Thickness" type="Button" parent="whiteboard_tools"]
 margin_left = 42.0
