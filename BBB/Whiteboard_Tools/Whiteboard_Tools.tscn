@@ -1,10 +1,10 @@
 [gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://BBB/Whiteboard_Tools/Whiteboard_Tools.gd" type="Script" id=1]
-[ext_resource path="res://BBB/Whiteboard_Tools/WBButton.gd" type="Script" id=2]
-[ext_resource path="res://Assets/wb_toolbar.png" type="Texture" id=3]
-[ext_resource path="res://Assets/pencil_toolbar.png" type="Texture" id=4]
-[ext_resource path="res://Assets/pencil_toolbar_icons.png" type="Texture" id=5]
+[ext_resource path="res://Assets/wb_toolbar.png" type="Texture" id=2]
+[ext_resource path="res://BBB/Whiteboard_Tools/WBButton.gd" type="Script" id=3]
+[ext_resource path="res://Assets/pencil_toolbar_icons.png" type="Texture" id=4]
+[ext_resource path="res://Assets/pencil_toolbar.png" type="Texture" id=5]
 
 [sub_resource type="InputEventKey" id=1]
 scancode = 80
@@ -99,7 +99,7 @@ __meta__ = {
 }
 
 [node name="toolbar" type="Sprite" parent="."]
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 offset = Vector2( 152, 22 )
 
 [node name="whiteboard_tools" type="HBoxContainer" parent="."]
@@ -116,14 +116,14 @@ margin_bottom = 44.0
 rect_min_size = Vector2( 42, 44 )
 shortcut = SubResource( 2 )
 flat = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 button_type = 1
 
 [node name="tool" type="Sprite" parent="whiteboard_tools/PencilTools"]
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 offset = Vector2( 21, 22 )
 hframes = 7
 frame = 6
@@ -135,7 +135,7 @@ margin_bottom = 44.0
 rect_min_size = Vector2( 42, 44 )
 shortcut = SubResource( 4 )
 flat = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -148,7 +148,7 @@ margin_bottom = 44.0
 rect_min_size = Vector2( 42, 44 )
 shortcut = SubResource( 6 )
 flat = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -171,13 +171,15 @@ color = Color( 0.0235294, 0.0901961, 0.164706, 1 )
 polygon = PoolVector2Array( -5, -5, 323, -5, 323, 415, -5, 415 )
 
 [node name="ColorPicker" type="ColorPicker" parent="whiteboard_tools/Color/Picker_Position"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 4.0
+margin_bottom = 4.0
 rect_min_size = Vector2( 318, 412 )
 rect_pivot_offset = Vector2( 159, 0 )
 color = Color( 0, 0, 0, 1 )
 edit_alpha = false
 deferred_mode = true
-presets_enabled = false
-presets_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -194,7 +196,7 @@ margin_bottom = 44.0
 rect_min_size = Vector2( 45, 44 )
 shortcut = SubResource( 8 )
 flat = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -207,7 +209,7 @@ margin_bottom = 44.0
 rect_min_size = Vector2( 45, 44 )
 shortcut = SubResource( 10 )
 flat = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -220,7 +222,7 @@ margin_bottom = 44.0
 rect_min_size = Vector2( 45, 44 )
 shortcut = SubResource( 12 )
 flat = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -232,7 +234,7 @@ margin_right = 303.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 42, 44 )
 flat = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -250,10 +252,11 @@ __meta__ = {
 }
 
 [node name="toolbar" type="Sprite" parent="pencil_tools"]
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 offset = Vector2( 146, 21 )
 
 [node name="Selected" type="Polygon2D" parent="pencil_tools"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 251, 0 )
 color = Color( 0, 0, 0, 0.509804 )
 polygon = PoolVector2Array( 0, 0, 42, 0, 42, 42, 0, 42 )
@@ -265,7 +268,7 @@ rect_min_size = Vector2( 42.5, 40 )
 focus_mode = 0
 shortcut = SubResource( 14 )
 flat = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -279,7 +282,7 @@ rect_min_size = Vector2( 41.5, 42 )
 focus_mode = 0
 shortcut = SubResource( 16 )
 flat = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -293,7 +296,7 @@ rect_min_size = Vector2( 43.4, 42 )
 focus_mode = 0
 shortcut = SubResource( 18 )
 flat = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -307,7 +310,7 @@ rect_min_size = Vector2( 43.5, 42 )
 focus_mode = 0
 shortcut = SubResource( 20 )
 flat = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -321,7 +324,7 @@ rect_min_size = Vector2( 41.5, 42 )
 focus_mode = 0
 shortcut = SubResource( 22 )
 flat = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -335,7 +338,7 @@ rect_min_size = Vector2( 41, 42 )
 focus_mode = 0
 shortcut = SubResource( 24 )
 flat = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -348,7 +351,7 @@ margin_bottom = 42.0
 rect_min_size = Vector2( 41, 42 )
 focus_mode = 0
 flat = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
