@@ -7,7 +7,3 @@ signal wb_button_pressed(button, type)
 
 func _on_Whiteboard_Tools_pressed():
 	emit_signal("wb_button_pressed", self, button_type)
-	
-func _on_Pencil_Tools_pressed():
-	# achei que seria necessario dividir, mas nem foi, refatorar?
-	emit_signal("wb_button_pressed", self, button_type)

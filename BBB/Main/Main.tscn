@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://BBB/Main/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/bbb_Interface.png" type="Texture" id=2]
@@ -6,8 +6,6 @@
 [ext_resource path="res://BBB/Whiteboard_Tools/Whiteboard_Tools.tscn" type="PackedScene" id=4]
 [ext_resource path="res://BBB/Main/PlusButton.gd" type="Script" id=5]
 [ext_resource path="res://BBB/PlusMenu/PlusPopup.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/pencil_toolbar.png" type="Texture" id=7]
-[ext_resource path="res://BBB/Whiteboard_Tools/Pencil_Tools.tscn" type="PackedScene" id=8]
 
 [node name="Main" type="Node2D"]
 scale = Vector2( 0.67, 0.67 )
@@ -49,19 +47,6 @@ __meta__ = {
 visible = false
 position = Vector2( 78, -65 )
 z_index = 2
-
-[node name="PencilToolsSprite" type="Sprite" parent="."]
-position = Vector2( 1479.36, 925.46 )
-texture = ExtResource( 7 )
-
-[node name="Pencil_Panel" parent="." instance=ExtResource( 8 )]
-margin_left = 1333.38
-margin_top = 904.56
-margin_right = 1636.38
-margin_bottom = 946.81
-[connection signal="pencil_button_pressed" from="Whiteboard_Panel" to="." method="_on_Whiteboard_pencil_button_pressed"]
 [connection signal="tool_changed" from="Whiteboard_Panel" to="." method="_on_Whiteboard_tool_changed"]
 [connection signal="pressed" from="PlusButton" to="PlusButton" method="_on_PlusButton_pressed"]
 [connection signal="temp_whiteboard" from="PlusButton/PlusPopup" to="." method="_on_temp_whiteboard"]
-[connection signal="pencil_button_pressed" from="Pencil_Panel" to="." method="_on_Whiteboard_pencil_button_pressed"]
-[connection signal="tool_changed" from="Pencil_Panel" to="." method="_on_Whiteboard_tool_changed"]
