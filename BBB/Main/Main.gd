@@ -20,6 +20,7 @@ func temp_canvas():
 	canvas_instance.rect_size = cur_canvas.rect_size
 	canvas_instance.mode = cur_canvas.mode
 	canvas_instance.pencil_color = cur_canvas.pencil_color
+	canvas_instance.RADIUS = cur_canvas.RADIUS
 
 	remove_child(cur_canvas)
 	self.add_child_below_node($BBB_Interface, canvas_instance)
@@ -30,6 +31,7 @@ func temp_canvas():
 func pop_canvas():
 	stored_canvas.mode = cur_canvas.mode
 	stored_canvas.pencil_color = cur_canvas.pencil_color
+	stored_canvas.RADIUS = cur_canvas.RADIUS
 	cur_canvas.call_deferred("free")
 	self.add_child_below_node($BBB_Interface, stored_canvas)
 	cur_canvas = stored_canvas
@@ -40,3 +42,6 @@ func _on_Whiteboard_tool_changed(new_tool):
 
 func _on_color_changed(new_color):
 	cur_canvas.pencil_color = new_color
+
+func _on_thickness_changed(new_thickness):
+	cur_canvas.RADIUS = new_thickness

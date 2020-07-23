@@ -4,6 +4,7 @@ enum {NONE, PENCIL_TOOLS, THICKNESS, COLOR, UNDO, REDO, TRASH, SHARE, TEXT, LINE
 
 signal tool_changed(new_tool)
 signal color_changed(new_color)
+signal thickness_changed(new_thickness)
 signal is_drawable(state)
 
 func _on_wb_button_pressed(button : Button, type : int):
@@ -13,6 +14,9 @@ func _on_wb_button_pressed(button : Button, type : int):
 	match(type):
 		PENCIL_TOOLS:
 			$pencil_tools.visible = not $pencil_tools.visible
+
+		THICKNESS:
+			$whiteboard_tools/Thickness/Slider_Pos.visible = not $whiteboard_tools/Thickness/Slider_Pos.visible
 
 		COLOR:
 			$whiteboard_tools/Color/Picker_Position.visible = not $whiteboard_tools/Color/Picker_Position.visible
@@ -34,6 +38,9 @@ func _on_color_changed(color):
 	$whiteboard_tools/Color/color_picked.color = color
 	emit_signal("color_changed", color)
 
+func _on_thickness_changed(value):
+	update()
+	emit_signal("thickness_changed", value)
 
 func _on_NotDrawableArea_mouse_entered():
 	emit_signal("is_drawable", false)
@@ -41,3 +48,7 @@ func _on_NotDrawableArea_mouse_entered():
 func _on_NotDrawableArea_mouse_exited():
 	emit_signal("is_drawable", true)
 
+func _draw():
+	var pos : Vector2 = $whiteboard_tools/Thickness.rect_position + Vector2(21,21)
+	var radius : float = $whiteboard_tools/Thickness/Slider_Pos/Slider.value
+	draw_circle(pos, radius, Color.black)

@@ -2,7 +2,7 @@ extends TextureRect
 
 var WIDTH : int = 1343
 var HEIGHT : int  = 795
-var RADIUS : int = 10
+var RADIUS : int = 5
 var BETWEEN_DIST : float = RADIUS/2.0
 var UNDO_LIMIT : int = 20
 
