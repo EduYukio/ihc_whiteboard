@@ -24,6 +24,8 @@ func temp_canvas():
 	remove_child(cur_canvas)
 	self.add_child_below_node($BBB_Interface, canvas_instance)
 	cur_canvas = canvas_instance
+	var _error = $PlusButton/PlusPopup.connect("is_drawable", canvas_instance, "_on_Whiteboard_Panel_is_drawable")
+	_error = $Whiteboard_Panel.connect("is_drawable", canvas_instance, "_on_Whiteboard_Panel_is_drawable")
 
 func pop_canvas():
 	stored_canvas.mode = cur_canvas.mode
