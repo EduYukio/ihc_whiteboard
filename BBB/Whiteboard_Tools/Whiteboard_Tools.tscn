@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://BBB/Whiteboard_Tools/Whiteboard_Tools.gd" type="Script" id=1]
 [ext_resource path="res://Assets/wb_toolbar.png" type="Texture" id=2]
@@ -12,6 +12,12 @@ scancode = 80
 [sub_resource type="ShortCut" id=2]
 shortcut = SubResource( 1 )
 
+[sub_resource type="InputEventKey" id=15]
+scancode = 84
+
+[sub_resource type="ShortCut" id=16]
+shortcut = SubResource( 15 )
+
 [sub_resource type="InputEventKey" id=3]
 scancode = 67
 
@@ -20,7 +26,6 @@ shortcut = SubResource( 3 )
 
 [sub_resource type="InputEventKey" id=5]
 control = true
-meta = true
 command = true
 scancode = 90
 
@@ -29,7 +34,6 @@ shortcut = SubResource( 5 )
 
 [sub_resource type="InputEventKey" id=7]
 control = true
-meta = true
 command = true
 scancode = 89
 
@@ -99,6 +103,7 @@ margin_left = 42.0
 margin_right = 84.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 42, 44 )
+shortcut = SubResource( 16 )
 flat = true
 script = ExtResource( 3 )
 __meta__ = {
