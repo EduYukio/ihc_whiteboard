@@ -6,51 +6,51 @@
 [ext_resource path="res://Assets/pencil_toolbar_icons.png" type="Texture" id=4]
 [ext_resource path="res://Assets/pencil_toolbar.png" type="Texture" id=5]
 
-[sub_resource type="InputEventKey" id=27]
+[sub_resource type="InputEventKey" id=1]
 scancode = 80
 
-[sub_resource type="ShortCut" id=28]
-shortcut = SubResource( 27 )
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
 
-[sub_resource type="InputEventKey" id=5]
+[sub_resource type="InputEventKey" id=3]
 scancode = 67
 
-[sub_resource type="ShortCut" id=6]
-shortcut = SubResource( 5 )
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
 
-[sub_resource type="InputEventKey" id=7]
+[sub_resource type="InputEventKey" id=6]
 control = true
 command = true
 scancode = 90
 
-[sub_resource type="ShortCut" id=8]
-shortcut = SubResource( 7 )
+[sub_resource type="ShortCut" id=7]
+shortcut = SubResource( 6 )
 
-[sub_resource type="InputEventKey" id=9]
+[sub_resource type="InputEventKey" id=8]
 control = true
 command = true
 scancode = 89
 
-[sub_resource type="ShortCut" id=10]
-shortcut = SubResource( 9 )
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
 
-[sub_resource type="InputEventKey" id=11]
+[sub_resource type="InputEventKey" id=10]
 scancode = 16777224
 
-[sub_resource type="ShortCut" id=12]
-shortcut = SubResource( 11 )
+[sub_resource type="ShortCut" id=11]
+shortcut = SubResource( 10 )
 
-[sub_resource type="InputEventKey" id=23]
+[sub_resource type="InputEventKey" id=13]
 scancode = 69
 
-[sub_resource type="ShortCut" id=24]
-shortcut = SubResource( 23 )
+[sub_resource type="ShortCut" id=14]
+shortcut = SubResource( 13 )
 
-[sub_resource type="InputEventKey" id=25]
+[sub_resource type="InputEventKey" id=15]
 scancode = 66
 
-[sub_resource type="ShortCut" id=26]
-shortcut = SubResource( 25 )
+[sub_resource type="ShortCut" id=16]
+shortcut = SubResource( 15 )
 
 [node name="Whiteboard_Panel" type="Control"]
 margin_right = 303.0
@@ -67,6 +67,7 @@ offset = Vector2( 152, 22 )
 [node name="whiteboard_tools" type="HBoxContainer" parent="."]
 margin_right = 303.0
 margin_bottom = 44.0
+mouse_filter = 0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -76,7 +77,7 @@ __meta__ = {
 margin_right = 42.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 42, 44 )
-shortcut = SubResource( 28 )
+shortcut = SubResource( 2 )
 flat = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -107,7 +108,7 @@ margin_left = 84.0
 margin_right = 126.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 42, 44 )
-shortcut = SubResource( 6 )
+shortcut = SubResource( 4 )
 flat = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -126,6 +127,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Control" type="Control" parent="whiteboard_tools/Color/Picker_Position"]
+margin_right = 325.0
+margin_bottom = 446.0
+
 [node name="BG" type="Polygon2D" parent="whiteboard_tools/Color/Picker_Position"]
 position = Vector2( 4, 4 )
 color = Color( 0.0235294, 0.0901961, 0.164706, 1 )
@@ -138,6 +143,7 @@ margin_right = 4.0
 margin_bottom = 4.0
 rect_min_size = Vector2( 318, 412 )
 rect_pivot_offset = Vector2( 159, 0 )
+mouse_filter = 0
 color = Color( 0, 0, 0, 1 )
 edit_alpha = false
 deferred_mode = true
@@ -155,7 +161,7 @@ margin_left = 126.0
 margin_right = 171.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 45, 44 )
-shortcut = SubResource( 8 )
+shortcut = SubResource( 7 )
 flat = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -168,7 +174,7 @@ margin_left = 171.0
 margin_right = 216.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 45, 44 )
-shortcut = SubResource( 10 )
+shortcut = SubResource( 9 )
 flat = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -181,7 +187,7 @@ margin_left = 216.0
 margin_right = 261.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 45, 44 )
-shortcut = SubResource( 12 )
+shortcut = SubResource( 11 )
 flat = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -207,6 +213,7 @@ margin_left = -251.0
 margin_top = -42.0
 margin_right = 41.0
 rect_min_size = Vector2( 292, 42 )
+mouse_filter = 0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -292,7 +299,7 @@ margin_right = 251.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 41, 42 )
 focus_mode = 0
-shortcut = SubResource( 24 )
+shortcut = SubResource( 14 )
 flat = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -306,7 +313,7 @@ margin_right = 292.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 41, 42 )
 focus_mode = 0
-shortcut = SubResource( 26 )
+shortcut = SubResource( 16 )
 flat = true
 script = ExtResource( 3 )
 __meta__ = {
@@ -319,7 +326,11 @@ button_type = 14
 [connection signal="wb_button_pressed" from="whiteboard_tools/Thickness" to="." method="_on_wb_button_pressed"]
 [connection signal="pressed" from="whiteboard_tools/Color" to="whiteboard_tools/Color" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="whiteboard_tools/Color" to="." method="_on_wb_button_pressed"]
+[connection signal="mouse_entered" from="whiteboard_tools/Color/Picker_Position/Control" to="." method="_on_NotDrawableArea_mouse_entered"]
+[connection signal="mouse_exited" from="whiteboard_tools/Color/Picker_Position/Control" to="." method="_on_NotDrawableArea_mouse_exited"]
 [connection signal="color_changed" from="whiteboard_tools/Color/Picker_Position/ColorPicker" to="." method="_on_color_changed"]
+[connection signal="mouse_entered" from="whiteboard_tools/Color/Picker_Position/ColorPicker" to="." method="_on_NotDrawableArea_mouse_entered"]
+[connection signal="mouse_exited" from="whiteboard_tools/Color/Picker_Position/ColorPicker" to="." method="_on_NotDrawableArea_mouse_exited"]
 [connection signal="pressed" from="whiteboard_tools/Undo" to="whiteboard_tools/Undo" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="whiteboard_tools/Undo" to="." method="_on_wb_button_pressed"]
 [connection signal="pressed" from="whiteboard_tools/Redo" to="whiteboard_tools/Redo" method="_on_Whiteboard_Tools_pressed"]
@@ -328,17 +339,31 @@ button_type = 14
 [connection signal="wb_button_pressed" from="whiteboard_tools/Trash" to="." method="_on_wb_button_pressed"]
 [connection signal="pressed" from="whiteboard_tools/Share" to="whiteboard_tools/Share" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="whiteboard_tools/Share" to="." method="_on_wb_button_pressed"]
+[connection signal="mouse_entered" from="pencil_tools/Text" to="." method="_on_NotDrawableArea_mouse_entered"]
+[connection signal="mouse_exited" from="pencil_tools/Text" to="." method="_on_NotDrawableArea_mouse_exited"]
 [connection signal="pressed" from="pencil_tools/Text" to="pencil_tools/Text" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="pencil_tools/Text" to="." method="_on_wb_button_pressed"]
+[connection signal="mouse_entered" from="pencil_tools/Line" to="." method="_on_NotDrawableArea_mouse_entered"]
+[connection signal="mouse_exited" from="pencil_tools/Line" to="." method="_on_NotDrawableArea_mouse_exited"]
 [connection signal="pressed" from="pencil_tools/Line" to="pencil_tools/Line" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="pencil_tools/Line" to="." method="_on_wb_button_pressed"]
+[connection signal="mouse_entered" from="pencil_tools/Circle" to="." method="_on_NotDrawableArea_mouse_entered"]
+[connection signal="mouse_exited" from="pencil_tools/Circle" to="." method="_on_NotDrawableArea_mouse_exited"]
 [connection signal="pressed" from="pencil_tools/Circle" to="pencil_tools/Circle" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="pencil_tools/Circle" to="." method="_on_wb_button_pressed"]
+[connection signal="mouse_entered" from="pencil_tools/Triangle" to="." method="_on_NotDrawableArea_mouse_entered"]
+[connection signal="mouse_exited" from="pencil_tools/Triangle" to="." method="_on_NotDrawableArea_mouse_exited"]
 [connection signal="pressed" from="pencil_tools/Triangle" to="pencil_tools/Triangle" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="pencil_tools/Triangle" to="." method="_on_wb_button_pressed"]
+[connection signal="mouse_entered" from="pencil_tools/Square" to="." method="_on_NotDrawableArea_mouse_entered"]
+[connection signal="mouse_exited" from="pencil_tools/Square" to="." method="_on_NotDrawableArea_mouse_exited"]
 [connection signal="pressed" from="pencil_tools/Square" to="pencil_tools/Square" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="pencil_tools/Square" to="." method="_on_wb_button_pressed"]
+[connection signal="mouse_entered" from="pencil_tools/Eraser" to="." method="_on_NotDrawableArea_mouse_entered"]
+[connection signal="mouse_exited" from="pencil_tools/Eraser" to="." method="_on_NotDrawableArea_mouse_exited"]
 [connection signal="pressed" from="pencil_tools/Eraser" to="pencil_tools/Eraser" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="pencil_tools/Eraser" to="." method="_on_wb_button_pressed"]
+[connection signal="mouse_entered" from="pencil_tools/Pencil" to="." method="_on_NotDrawableArea_mouse_entered"]
+[connection signal="mouse_exited" from="pencil_tools/Pencil" to="." method="_on_NotDrawableArea_mouse_exited"]
 [connection signal="pressed" from="pencil_tools/Pencil" to="pencil_tools/Pencil" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="pencil_tools/Pencil" to="." method="_on_wb_button_pressed"]

@@ -24,6 +24,7 @@ margin_top = 119.0
 margin_right = 1884.0
 margin_bottom = 937.0
 rect_min_size = Vector2( 1334, 818 )
+mouse_filter = 2
 
 [node name="Whiteboard_Panel" parent="." instance=ExtResource( 4 )]
 margin_left = 1583.0
@@ -51,4 +52,5 @@ z_index = 2
 [connection signal="is_drawable" from="Whiteboard_Panel" to="Canvas" method="_on_Whiteboard_Panel_is_drawable"]
 [connection signal="tool_changed" from="Whiteboard_Panel" to="." method="_on_Whiteboard_tool_changed"]
 [connection signal="pressed" from="PlusButton" to="PlusButton" method="_on_PlusButton_pressed"]
+[connection signal="is_drawable" from="PlusButton/PlusPopup" to="Canvas" method="_on_Whiteboard_Panel_is_drawable"]
 [connection signal="temp_whiteboard" from="PlusButton/PlusPopup" to="." method="_on_temp_whiteboard"]
