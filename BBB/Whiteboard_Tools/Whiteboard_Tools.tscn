@@ -364,6 +364,8 @@ button_type = 14
 [connection signal="wb_button_pressed" from="whiteboard_tools/Thickness" to="." method="_on_wb_button_pressed"]
 [connection signal="mouse_entered" from="whiteboard_tools/Thickness/Slider_Pos/Control" to="." method="_on_NotDrawableArea_mouse_entered"]
 [connection signal="mouse_exited" from="whiteboard_tools/Thickness/Slider_Pos/Control" to="." method="_on_NotDrawableArea_mouse_exited"]
+[connection signal="mouse_entered" from="whiteboard_tools/Thickness/Slider_Pos/Slider" to="." method="_on_NotDrawableArea_mouse_entered"]
+[connection signal="mouse_exited" from="whiteboard_tools/Thickness/Slider_Pos/Slider" to="." method="_on_NotDrawableArea_mouse_exited"]
 [connection signal="value_changed" from="whiteboard_tools/Thickness/Slider_Pos/Slider" to="." method="_on_thickness_changed"]
 [connection signal="pressed" from="whiteboard_tools/Color" to="whiteboard_tools/Color" method="_on_Whiteboard_Tools_pressed"]
 [connection signal="wb_button_pressed" from="whiteboard_tools/Color" to="." method="_on_wb_button_pressed"]
