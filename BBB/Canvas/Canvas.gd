@@ -4,6 +4,7 @@ var WIDTH : int = 1343
 var HEIGHT : int  = 795
 var RADIUS : int = 10
 var BETWEEN_DIST : float = RADIUS/2.0
+var UNDO_LIMIT : int = 20
 
 var image : Image
 var undo_array : Array = []
@@ -102,6 +103,8 @@ func _input(event):
 			elif mouse_pressed:
 				mouse_pressed = false
 				undo_array.append(image.duplicate())
+				if len(undo_array) > UNDO_LIMIT:
+					undo_array.pop_front().call_deferred("free")
 
 func paint(color):
 	var cur_pos : Vector2 = get_local_mouse_position()
