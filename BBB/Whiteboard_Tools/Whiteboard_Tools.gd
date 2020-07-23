@@ -7,19 +7,25 @@ signal color_changed(new_color)
 signal thickness_changed(new_thickness)
 signal is_drawable(state)
 
+onready var pencil_tools = $pencil_tools
+onready var thickness_slider = $whiteboard_tools/Thickness/Slider_Pos
+onready var color_picker = $whiteboard_tools/Color/Picker_Position
+
+onready var menus = [pencil_tools, thickness_slider, color_picker]
+
 func _on_wb_button_pressed(button : Button, type : int):
 	if type != PENCIL_TOOLS:
 		emit_signal("tool_changed", type)
 
 	match(type):
 		PENCIL_TOOLS:
-			$pencil_tools.visible = not $pencil_tools.visible
+			only_show_one_menu(pencil_tools)
 
 		THICKNESS:
-			$whiteboard_tools/Thickness/Slider_Pos.visible = not $whiteboard_tools/Thickness/Slider_Pos.visible
+			only_show_one_menu(thickness_slider)
 
 		COLOR:
-			$whiteboard_tools/Color/Picker_Position.visible = not $whiteboard_tools/Color/Picker_Position.visible
+			only_show_one_menu(color_picker)
 
 		TEXT, LINE, CIRCLE, TRIANGLE, SQUARE, ERASER, PENCIL:
 			emit_signal("is_drawable", true)
@@ -52,3 +58,14 @@ func _draw():
 	var pos : Vector2 = $whiteboard_tools/Thickness.rect_position + Vector2(21,21)
 	var radius : float = $whiteboard_tools/Thickness/Slider_Pos/Slider.value
 	draw_circle(pos, radius, Color.black)
+
+func only_show_one_menu(clicked_menu):
+	if clicked_menu.visible:
+		clicked_menu.visible = false
+		return
+		
+	clicked_menu.visible = true
+	for menu in menus:
+		if menu != clicked_menu:
+			menu.visible = false
+	
