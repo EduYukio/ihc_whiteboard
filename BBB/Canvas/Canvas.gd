@@ -21,6 +21,7 @@ var mouse_pressed : bool = false
 var last_pos : Vector2 = Vector2(0,0)
 
 var drawable : bool = true
+signal paint()
 
 func change_mode(new_mode : int):
 	match(new_mode):
@@ -75,6 +76,7 @@ func _ready():
 
 func _process(_delta):
 	if mouse_pressed and drawable:
+		emit_signal("paint")
 		if mode == PENCIL:
 			paint(pencil_color)
 

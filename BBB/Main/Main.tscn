@@ -48,10 +48,14 @@ __meta__ = {
 visible = false
 position = Vector2( 78, -65 )
 z_index = 2
+[connection signal="paint" from="Canvas" to="PlusButton" method="_on_Canvas_paint"]
+[connection signal="paint" from="Canvas" to="Whiteboard_Panel" method="_on_Canvas_paint"]
 [connection signal="color_changed" from="Whiteboard_Panel" to="." method="_on_color_changed"]
 [connection signal="is_drawable" from="Whiteboard_Panel" to="Canvas" method="_on_Whiteboard_Panel_is_drawable"]
+[connection signal="menu_was_clicked" from="Whiteboard_Panel" to="PlusButton" method="_on_Whiteboard_Panel_menu_was_clicked"]
 [connection signal="thickness_changed" from="Whiteboard_Panel" to="." method="_on_thickness_changed"]
 [connection signal="tool_changed" from="Whiteboard_Panel" to="." method="_on_Whiteboard_tool_changed"]
+[connection signal="plus_button_clicked" from="PlusButton" to="Whiteboard_Panel" method="_on_PlusButton_plus_button_clicked"]
 [connection signal="pressed" from="PlusButton" to="PlusButton" method="_on_PlusButton_pressed"]
 [connection signal="is_drawable" from="PlusButton/PlusPopup" to="Canvas" method="_on_Whiteboard_Panel_is_drawable"]
 [connection signal="temp_whiteboard" from="PlusButton/PlusPopup" to="." method="_on_temp_whiteboard"]

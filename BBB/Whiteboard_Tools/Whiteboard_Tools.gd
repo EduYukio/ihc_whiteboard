@@ -6,6 +6,7 @@ signal tool_changed(new_tool)
 signal color_changed(new_color)
 signal thickness_changed(new_thickness)
 signal is_drawable(state)
+signal menu_was_clicked()
 
 onready var pencil_tools = $pencil_tools
 onready var thickness_slider = $whiteboard_tools/Thickness/Slider_Pos
@@ -19,13 +20,13 @@ func _on_wb_button_pressed(button : Button, type : int):
 
 	match(type):
 		PENCIL_TOOLS:
-			only_show_one_menu(pencil_tools)
+			open_or_close_only_this_menu(pencil_tools)
 
 		THICKNESS:
-			only_show_one_menu(thickness_slider)
+			open_or_close_only_this_menu(thickness_slider)
 
 		COLOR:
-			only_show_one_menu(color_picker)
+			open_or_close_only_this_menu(color_picker)
 
 		TEXT, LINE, CIRCLE, TRIANGLE, SQUARE, ERASER, PENCIL:
 			emit_signal("is_drawable", true)
@@ -59,13 +60,21 @@ func _draw():
 	var radius : float = $whiteboard_tools/Thickness/Slider_Pos/Slider.value
 	draw_circle(pos, radius, Color.black)
 
-func only_show_one_menu(clicked_menu):
-	if clicked_menu.visible:
-		clicked_menu.visible = false
+func close_all_menus():
+	for menu in menus:
+		menu.visible = false
+		
+func open_or_close_only_this_menu(menu):
+	emit_signal("menu_was_clicked")
+	if menu.visible:
+		menu.visible = false
 		return
 		
-	clicked_menu.visible = true
-	for menu in menus:
-		if menu != clicked_menu:
-			menu.visible = false
-	
+	close_all_menus()
+	menu.visible = true
+		
+func _on_Canvas_paint():
+	close_all_menus()
+
+func _on_PlusButton_plus_button_clicked():
+	close_all_menus()

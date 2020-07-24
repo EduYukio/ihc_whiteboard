@@ -1,8 +1,13 @@
 extends Button
 
-func _on_PlusButton_pressed():
-	if not $PlusPopup.visible:
-		$PlusPopup.show()
+signal plus_button_clicked()
 
-	else:
-		$PlusPopup.hide()
+func _on_PlusButton_pressed():
+	emit_signal("plus_button_clicked")
+	$PlusPopup.visible = not $PlusPopup.visible
+
+func _on_Canvas_paint():
+	$PlusPopup.visible = false
+
+func _on_Whiteboard_Panel_menu_was_clicked():
+	$PlusPopup.visible = false
