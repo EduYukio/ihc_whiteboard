@@ -27,6 +27,9 @@ func temp_canvas():
 	cur_canvas = canvas_instance
 	var _error = $PlusButton/PlusPopup.connect("is_drawable", canvas_instance, "_on_Whiteboard_Panel_is_drawable")
 	_error = $Whiteboard_Panel.connect("is_drawable", canvas_instance, "_on_Whiteboard_Panel_is_drawable")
+	_error = canvas_instance.connect("paint", $Whiteboard_Panel, "_on_Canvas_paint")
+	_error = canvas_instance.connect("paint", $PlusButton, "_on_Canvas_paint")
+	
 
 func pop_canvas():
 	stored_canvas.mode = cur_canvas.mode
