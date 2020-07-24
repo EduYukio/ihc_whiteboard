@@ -14,6 +14,34 @@ onready var color_picker = $whiteboard_tools/Color/Picker_Position
 
 onready var menus = [pencil_tools, thickness_slider, color_picker]
 
+var node_array = []
+
+func _ready():
+	connect_color_picker_nodes()
+
+func connect_color_picker_nodes():
+	var color_picker = get_node("whiteboard_tools/Color/Picker_Position/ColorPicker")
+	get_all_nodes(color_picker)
+	for node in node_array:
+		if node is Control:
+			node.mouse_filter = MOUSE_FILTER_PASS
+			if not node.is_connected("mouse_entered", self, "_on_NotDrawableArea_mouse_entered"):
+				node.connect("mouse_entered", self, "_on_NotDrawableArea_mouse_entered")
+				
+			if not node.is_connected("mouse_exited", self, "_on_NotDrawableArea_mouse_exited"):
+				node.connect("mouse_exited", self, "_on_NotDrawableArea_mouse_exited")
+				
+func get_all_nodes(node):
+	node_array.append(node)
+	for N in node.get_children():
+		if N.get_child_count() > 0:
+			if not node_array.has(N):
+				node_array.append(N)
+			get_all_nodes(N)
+		else:
+			if not node_array.has(N):
+				node_array.append(N)
+			
 func _on_wb_button_pressed(button : Button, type : int):
 	if type != PENCIL_TOOLS:
 		emit_signal("tool_changed", type)
